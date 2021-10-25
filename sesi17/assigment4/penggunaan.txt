@@ -1,0 +1,3 @@
+//026_Armando Fransisco Ongko
+Kalkulator sederhana - Static
+jalankan Assigment.js mengunakan command --> node Assigment
