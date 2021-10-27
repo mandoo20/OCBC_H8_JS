@@ -1,0 +1,26 @@
+<form>
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      name="inputTodo"
+      placeholder="Enter todo..."
+      class="form-control"
+      [(ngModel)]="inputTodo"
+    />
+    <div *ngIf="inputTodo.length < 1; else elseblock">
+      <button
+        name="Add Todo"
+        class="btn btn-primary"
+        (click)="addTodo()"
+        disabled
+      >
+        Submit
+      </button>
+    </div>
+    <ng-template #elseblock>
+      <button name="Add Todo" class="btn btn-primary" (click)="addTodo()">
+        Submit
+      </button>
+    </ng-template>
+  </div>
+</form>
