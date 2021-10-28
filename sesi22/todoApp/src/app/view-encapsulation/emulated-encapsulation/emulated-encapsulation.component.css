@@ -1,0 +1,7 @@
+h2 {
+    color: pink;
+}
+
+div.emulated-encapsulation {
+    border: pink solid 1px;
+}

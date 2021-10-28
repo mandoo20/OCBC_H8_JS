@@ -1,0 +1,7 @@
+h2,.shadow-dom-encapsulation {
+    color: blue;
+}
+
+div.shadow-dom-encapsulation {
+    border: blue solid 1px;
+}

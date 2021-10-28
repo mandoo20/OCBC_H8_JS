@@ -4,39 +4,35 @@ import { Todo } from 'src/app/models/Todo';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
+  todos: Todo[] = [];
 
-  todos:Todo[]=[];
-
-  toggleDone (id:number) {
-    this.todos.map((v,i) => {
+  toggleDone(id: number) {
+    this.todos.map((v, i) => {
       if (i == id) v.completed = !v.completed;
       //console.log(v);
-    })
+    });
   }
 
-  deleteTodo (id:number) {
-    this.todos = this.todos.filter((v,i) => i !== id);
+  deleteTodo(id: number) {
+    this.todos = this.todos.filter((v, i) => i !== id);
   }
-  
+
   addTodo(todo: Todo) {
-    if(todo.content.length >0)
-        this.todos.push(todo);
-      else
-        alert("Cant be Adding Empty Todo list");
+    this.todos.push(todo);
   }
 
-  toggleEdit(id: number){
-    this.todos.map((v,i) => {
+  toggleEdit(id: number) {
+    this.todos.map((v, i) => {
       if (i == id) v.editing = !v.editing;
       //console.log(v);
-    })
+    });
   }
 
   // saveEditTodo(idx: number, text: string){
-  //   this.todos[idx] ={"content" : text, "completed": false, "editing" : false} 
+  //   this.todos[idx] ={"content" : text, "completed": false, "editing" : false}
   // }
 
   ngOnInit(): void {
@@ -44,14 +40,13 @@ export class TodoListComponent implements OnInit {
       {
         content: 'First todo',
         completed: false,
-       editing: false
+        editing: false,
       },
       {
-        content:'Second todo',
-        completed:false,
-       editing: false
-      }
-    ]
+        content: 'Second todo',
+        completed: false,
+        editing: false,
+      },
+    ];
   }
-
 }
