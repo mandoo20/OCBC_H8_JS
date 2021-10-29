@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/models/Todo';
 
 @Component({
@@ -7,7 +7,10 @@ import { Todo } from 'src/app/models/Todo';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
+  @Output() comTodoEvent = new EventEmitter<Todo>();
+
   todos: Todo[] = [];
+  completedTodo : Todo[]=[];
 
   toggleDone(id: number) {
     this.todos.map((v, i) => {
@@ -16,8 +19,22 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  deleteTodo(id: number) {
+  deleteTodo(content : string, id : number) {
+    const comTodo: Todo = {
+      content: content,
+      completed: true,
+      editing: false,
+    };
+    this.comTodoEvent.emit(comTodo);
+
+
+    this.completedTodo.push(comTodo);
     this.todos = this.todos.filter((v, i) => i !== id);
+
+  }
+
+  deleteCompleteTodo(id: number) {
+    this.completedTodo = this.completedTodo.filter((v, i) => i !== id);
   }
 
   addTodo(todo: Todo) {

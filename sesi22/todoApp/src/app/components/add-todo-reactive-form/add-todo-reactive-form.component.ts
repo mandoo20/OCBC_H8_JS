@@ -20,18 +20,26 @@ export class AddTodoReactiveFormComponent implements OnInit {
   get inputTodo() {
     return this.addTodoForm.get('inputTodo');
   }
+  isSubmitted = false;
+
+  handleIsSubmittedState () {
+    if(this.isSubmitted === true)
+      this.isSubmitted = false
+  }
 
   addTodo() {
-    const todo: Todo = {
-      content: this.addTodoForm.get('inputTodo')?.value,
-      completed: false,
-      editing: false,
-    };
 
-    this.newTodoEvent.emit(todo);
-    this.addTodoForm.patchValue({
-      inputTodo: '',
-    });
+    this.isSubmitted = true;
+    if(!this.addTodoForm.invalid) {
+      this.isSubmitted = false;
+      const todo: Todo = {
+        content: this.addTodoForm.get('inputTodo')?.value,
+        completed: false,
+        editing: false,
+      };
+      this.newTodoEvent.emit(todo);
+    }
+    this.addTodoForm.reset();
   }
 
   ngOnInit(): void {}

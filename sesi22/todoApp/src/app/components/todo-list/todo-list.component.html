@@ -1,6 +1,6 @@
 <!-- <app-add-todo-form (newTodoEvent)="addTodo($event)"> </app-add-todo-form> -->
 <app-add-todo-reactive-form (newTodoEvent)="addTodo($event)"> </app-add-todo-reactive-form>
-
+<h5>Todo List</h5>
 <ol *ngFor="let todo of todos; let i = index" class="list-group">
   <li
     *ngIf="!todo.editing"
@@ -22,7 +22,7 @@
     <button class="btn btn-secondary btn-sm editing" (click)="toggleEdit(i)">
       <i class="bi bi-pencil-square"></i>
     </button>
-    <button class="btn btn-danger btn-sm" (click)="deleteTodo(i)">
+    <button class="btn btn-danger btn-sm" (click)="deleteTodo(todo.content,i)">
       <i class="bi bi-trash-fill"></i>
     </button>
   </li>
@@ -38,6 +38,23 @@
 
     <button class="btn btn-success btn-sm" (click)="toggleEdit(i)">
       <i class="bi bi-save"></i>
+    </button>
+  </li>
+</ol>
+
+<h5>Complete List</h5>
+<ol *ngFor="let todo of completedTodo; let i = index" class="list-group">
+  <li
+    class="list-group-item d-flex justify-content-between align-items-start"
+  >
+    <div class="ms-3 me-auto">
+      <div class="content {{ todo.completed ? 'done' : '' }}">
+        {{ i + 1 }}. {{ todo.content }}
+      </div>
+    </div>
+  
+    <button class="btn btn-danger btn-sm" (click)="deleteCompleteTodo(i)">
+      <i class="bi bi-trash-fill"></i>
     </button>
   </li>
 </ol>

@@ -1,5 +1,20 @@
 <form [formGroup]="addTodoForm" (ngSubmit)="addTodo()">
   <div class="input-group mb-3">
+    <span
+      *ngIf="isSubmitted && inputTodo?.errors?.required"
+      class="alert alert-danger"
+    >
+      Required!
+    </span>
+    <span
+      *ngIf="isSubmitted && inputTodo?.errors?.minlength"
+      class="alert alert-warning"
+    >
+      Todo inputted must be at least
+      {{ inputTodo?.errors?.minlength.requiredLength }} characters.
+    </span>
+  </div>
+  <div class="input-group mb-3">
     <input
       type="text"
       name="inputTodo"
@@ -7,29 +22,17 @@
       placeholder="Enter todo..."
       class="form-control"
       formControlName="inputTodo"
+      (change)= handleIsSubmittedState()
+
     />
 
     <button
       name="Add Todo"
       class="btn btn-primary"
-      [disabled]="!addTodoForm.valid"
-    >
+      >
+      <!-- [disabled]="!addTodoForm.valid" -->
       Submit
     </button>
   </div>
-  <div class="input-group mb-3">
-    <span
-      *ngIf=" inputTodo?.errors?.required"
-      class="alert alert-danger"
-    >
-      Please type something!
-    </span>
-    <span
-      *ngIf=" inputTodo?.errors?.minlength"
-      class="alert alert-danger"
-    >
-      Name must be at least
-      {{ inputTodo?.errors?.minlength.requiredLength }} characters .
-    </span>
-  </div>
+  
 </form>
