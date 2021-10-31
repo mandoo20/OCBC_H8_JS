@@ -1,0 +1,50 @@
+<h5>Three Most Populated Countries</h5>
+<div class="row justify-content-center">
+  <div class="col-sm-4" *ngFor="let country of countries_Pop | slice:0:3;">
+    <div class="btn-group d-flex" >
+      <div class="card-body media-object">
+        <button
+          [routerLink]="['/country-detail/', country.name]"
+          class="btn btn-danger option-button"
+        >
+          <h5 class="card-title">{{ country.name }}</h5>
+          <p class="card-text">{{country.population}} <br> People</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5>Three Largest Countries (Area)</h5>
+<div class="row justify-content-center">
+  <div class="col-sm-4" *ngFor="let country of countries_Area | slice:0:3;">
+    <div class="btn-group d-flex" >
+      <div class="card-body media-object">
+        <button
+          [routerLink]="['/country-detail/', country.name]"
+          class="btn btn-danger option-button"
+        >
+          <h5 class="card-title">{{ country.name }}</h5>
+          <p class="card-text">{{country.area}} km²</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5>Three Largest GDP Countries</h5>
+<div class="row justify-content-center">
+  <div class="col-sm-4" *ngFor="let country of countries_GDP | slice:0:3;">
+    <div class="btn-group d-flex" >
+      <div class="card-body media-object">
+        <button
+          [routerLink]="['/country-detail/', country.name]"
+          class="btn btn-danger option-button"
+        >
+          <h5 class="card-title">{{ country.name }}</h5>
+          <p class="card-text">${{country.GDP}} billion </p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

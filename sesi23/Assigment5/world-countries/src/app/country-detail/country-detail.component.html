@@ -1,0 +1,38 @@
+<h2 class="card-title .text-dark">{{ country_name }}</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col text-success">Capital</div>
+    <div class="col">{{ countrydet.capital }}</div>
+  </div>
+  <div class="row">
+    <div class="col text-success">Largest City:</div>
+    <div class="col">{{ countrydet.largest_city }}</div>
+  </div>
+  <div class="row">
+    <div class="col text-success">Area:</div>
+    <div class="col">{{ countrydet.area }} km²</div>
+  </div>
+  <div class="row">
+    <div class="col text-success">Population:</div>
+    <div class="col">{{ countrydet.population }} People</div>
+  </div>
+  <div class="row">
+    <div class="col text-success">GDP:</div>
+    <div class="col">${{ countrydet.GDP }} billion</div>
+  </div>
+  <div class="row">
+    <div class="col text-success">Currency:</div>
+    <div class="col">{{ countrydet.currency }}</div>
+  </div>
+  <div class="row">
+      <div class="col">
+
+          <button routerLink="" routerLinkActive="active"  class="btn btn-danger">Go Back</button>
+      </div>
+      <div class="col">
+
+      </div>
+
+  </div>
+</div>

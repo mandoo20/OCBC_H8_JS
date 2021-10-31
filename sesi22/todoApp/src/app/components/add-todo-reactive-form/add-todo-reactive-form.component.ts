@@ -14,6 +14,7 @@ export class AddTodoReactiveFormComponent implements OnInit {
     inputTodo: new FormControl('', [
       Validators.required,
       Validators.minLength(5),
+      // Validators.pattern("^[a-zA-Z]$"),
     ]),
   });
 

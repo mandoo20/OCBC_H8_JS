@@ -1,0 +1,16 @@
+<h5>List of All the Countries in Our Database</h5>
+<div class="row justify-content-center">
+  <div class="col-sm-4" *ngFor="let country of countries">
+    <div class="btn-group d-flex" >
+      <div class="card-body media-object">
+        <button
+          [routerLink]="['/country-detail/', country.name]"
+          class="btn btn-danger option-button"
+        >
+          <h5 class="card-title">{{ country.name }}</h5>
+          <p class="card-text">Capital <br> {{ country.capital }}</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

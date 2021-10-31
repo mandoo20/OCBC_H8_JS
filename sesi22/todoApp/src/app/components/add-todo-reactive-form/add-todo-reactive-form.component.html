@@ -1,18 +1,24 @@
 <form [formGroup]="addTodoForm" (ngSubmit)="addTodo()">
   <div class="input-group mb-3">
     <span
-      *ngIf="isSubmitted && inputTodo?.errors?.required"
-      class="alert alert-danger"
-    >
-      Required!
-    </span>
-    <span
       *ngIf="isSubmitted && inputTodo?.errors?.minlength"
       class="alert alert-warning"
     >
       Todo inputted must be at least
       {{ inputTodo?.errors?.minlength.requiredLength }} characters.
     </span>
+    <span
+      *ngIf="isSubmitted && inputTodo?.errors?.required"
+      class="alert alert-danger"
+    >
+      Required!
+    </span>
+    <!-- <span
+      *ngIf="isSubmitted && inputTodo?.errors?.pattern"
+      class="alert alert-warning"
+    >
+      wrong input
+    </span> -->
   </div>
   <div class="input-group mb-3">
     <input
