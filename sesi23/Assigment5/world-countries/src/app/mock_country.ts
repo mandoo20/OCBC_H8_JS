@@ -16,7 +16,7 @@ export const COUNTRIES: Country[]  = [
         largest_city: 'Shanghai',
         area: '9596961',
         population: '1411778724',
-        GDP: '26660000',
+        GDP: '29660000',
         currency: 'Renminbi(元/¥) (CNY)',
       },
       {

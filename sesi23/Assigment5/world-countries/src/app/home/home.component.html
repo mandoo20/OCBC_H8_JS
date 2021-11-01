@@ -1,6 +1,6 @@
 <h5>Three Most Populated Countries</h5>
 <div class="row justify-content-center">
-  <div class="col-sm-4" *ngFor="let country of countries_Pop | slice:0:3;">
+  <div class="col-sm-4" *ngFor="let country of PopSort | slice:0:3;">
     <div class="btn-group d-flex" >
       <div class="card-body media-object">
         <button
@@ -17,7 +17,7 @@
 
 <h5>Three Largest Countries (Area)</h5>
 <div class="row justify-content-center">
-  <div class="col-sm-4" *ngFor="let country of countries_Area | slice:0:3;">
+  <div class="col-sm-4" *ngFor="let country of AreaSort | slice:0:3;">
     <div class="btn-group d-flex" >
       <div class="card-body media-object">
         <button
@@ -34,7 +34,7 @@
 
 <h5>Three Largest GDP Countries</h5>
 <div class="row justify-content-center">
-  <div class="col-sm-4" *ngFor="let country of countries_GDP | slice:0:3;">
+  <div class="col-sm-4" *ngFor="let country of GDPSort | slice:0:3;">
     <div class="btn-group d-flex" >
       <div class="card-body media-object">
         <button

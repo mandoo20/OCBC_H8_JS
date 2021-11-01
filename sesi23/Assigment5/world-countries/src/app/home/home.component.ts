@@ -8,14 +8,15 @@ import { CountryService } from '../country.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  countries: Country[] = [];
   countries_Pop: Country[] = [];
   countries_Area: Country[] = [];
   countries_GDP: Country[] = [];
 
   
-
-
+  
+  PopSort: Country[] = [];
+  AreaSort: Country[] = [];
+  GDPSort: Country[] = [];
 
 
   constructor(private countryService: CountryService) { }
@@ -25,13 +26,21 @@ export class HomeComponent implements OnInit {
     this.getCountriesArea();
     this.getCountriesGDP();
 
-    this.countries_Pop.sort((a,b) => b.population.localeCompare(a.population,undefined, {'numeric': true}))
-    this.countries_Area.sort((a,b) => b.area.localeCompare(a.area,undefined, {'numeric': true}))
-    this.countries_GDP.sort((a,b) => b.GDP.localeCompare(a.GDP,undefined, {'numeric': true}))
+    
+    this.PopSort = this.countries_Pop.map(x => Object.assign({},x));
+    this.PopSort.sort((a,b) => b.population.localeCompare(a.population,undefined, {'numeric': true}))
+
+    this.AreaSort = this.countries_Area.map(y => Object.assign({},y));
+    this.AreaSort.sort((a,b) => b.area.localeCompare(a.area,undefined, {'numeric': true}))
+
+    this.GDPSort = this.countries_GDP.map(z => Object.assign({},z));
+    this.GDPSort.sort((a,b) => b.GDP.localeCompare(a.GDP,undefined, {'numeric': true}))
+
     this.allnumberwithComma();
   }
 
   getCountriesPOP() {
+
     this.countryService.getCountry().subscribe(countries => this.countries_Pop = countries);
   }
   getCountriesArea() {
@@ -40,12 +49,14 @@ export class HomeComponent implements OnInit {
   getCountriesGDP() {
     this.countryService.getCountry().subscribe(countries => this.countries_GDP = countries);
   }
+
+  
   
   allnumberwithComma() {
     for(var i = 0;i < this.countries_Pop.length;i++) {
-      this.countries_Pop[i].population = this.numberWithCommas(this.countries_Pop[i].population);
-      this.countries_Area[i].area = this.numberWithCommas(this.countries_Area[i].area);
-      this.countries_GDP[i].GDP = this.numberWithCommas(this.countries_GDP[i].GDP);
+      this.PopSort[i].population = this.numberWithCommas(this.PopSort[i].population);
+      this.AreaSort[i].area = this.numberWithCommas(this.AreaSort[i].area);
+      this.GDPSort[i].GDP = this.numberWithCommas(this.GDPSort[i].GDP);
     }
   }
 
