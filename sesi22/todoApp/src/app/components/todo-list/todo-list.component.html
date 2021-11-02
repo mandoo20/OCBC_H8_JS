@@ -13,17 +13,17 @@
     </div>
     <button
       class="btn btn-{{
-        todo.completed ? 'warning' : 'success'
+        todo.completed ? 'warning' : 'info'
       }} btn-sm completed"
       (click)="toggleDone(i)"
     >
-      <i class="bi bi-check-circle"></i>
+      <i class="bi bi-journal-check"></i>
     </button>
     <button class="btn btn-secondary btn-sm editing" (click)="toggleEdit(i)">
       <i class="bi bi-pencil-square"></i>
     </button>
-    <button class="btn btn-danger btn-sm" (click)="deleteTodo(todo.content,i)">
-      <i class="bi bi-trash-fill"></i>
+    <button class="btn btn-success btn-sm" (click)="deleteTodo(todo.content,i)">
+      <i class="bi bi-check-circle"></i>
     </button>
   </li>
   <li
